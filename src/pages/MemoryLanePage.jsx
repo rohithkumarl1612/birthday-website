@@ -17,6 +17,8 @@ const photos = [
     { id: 11, type: 'jpg' },
     { id: 12, type: 'jpg' },
     { id: 13, type: 'jpg' },
+    { id: 14, type: 'jpg' },
+    { id: 15, type: 'jpg' },
 ];
 
 const MemoryLanePage = () => {
@@ -26,7 +28,7 @@ const MemoryLanePage = () => {
     const isDraggingRef = useRef(false);
     const lastXRef = useRef(0);
     const frameRef = useRef();
-    
+
     // Use state only for initial mount and radius updates
     const [radius, setRadius] = useState({ x: 420, z: 300 });
 
@@ -48,7 +50,7 @@ const MemoryLanePage = () => {
     useEffect(() => {
         const updateCards = () => {
             if (!containerRef.current) return;
-            
+
             const cards = containerRef.current.children;
             const currentRotation = rotationRef.current;
             const radX = radius.x;
@@ -65,7 +67,7 @@ const MemoryLanePage = () => {
 
                 const x = Math.sin(currentAngle) * radX;
                 const z = Math.cos(currentAngle) * radZ;
-                
+
                 // Depth effects
                 const opacity = (z + radZ) / (2 * radZ) * 0.75 + 0.25;
                 const scale = (z + radZ) / (2 * radZ) * 0.4 + 0.6;
@@ -104,7 +106,7 @@ const MemoryLanePage = () => {
     };
 
     return (
-        <div 
+        <div
             className="w-full h-[100dvh] bg-[#fdf0f5] relative overflow-hidden flex flex-col items-center justify-center p-0 m-0 touch-none select-none"
             onMouseDown={handlePointerDown}
             onMouseMove={handlePointerMove}
@@ -143,11 +145,11 @@ const MemoryLanePage = () => {
             </nav>
 
             {/* Loop Container - Centered better with vertical padding */}
-            <div 
+            <div
                 className="relative w-full h-[65vh] flex items-center justify-center mt-12"
                 style={{ perspective: '1400px' }}
             >
-                <div 
+                <div
                     ref={containerRef}
                     className="relative w-full h-full flex items-center justify-center"
                     style={{ transformStyle: 'preserve-3d' }}
