@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Alex+Brush&display=swap');
+
+@theme {
+  --color-primary-light: #FFF0F3;
+  --color-primary: #FFB6C1;
+  --color-primary-dark: #FF8DA1;
+
+  --color-rosegold-light: #F4E3E0;
+  --color-rosegold: #E0BFB8;
+  --color-rosegold-dark: #CBA29A;
+
+  --color-champagne-light: #FDF7EC;
+  --color-champagne: #F7E7CE;
+  --color-champagne-dark: #ECD7A8;
+
+  --font-playfair: "Playfair Display", serif;
+  --font-inter: "Inter", sans-serif;
+  --font-pinyon: "Pinyon Script", cursive;
+  --font-cormorant: "Cormorant Garamond", serif;
+  --font-alex: "Alex Brush", cursive;
+}
+
+:root {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: #FFF0F3;
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/40 backdrop-blur-md border border-white/20 rounded-3xl;
+  }
+
+  .glass-button {
+    @apply bg-white/60 backdrop-blur-sm border border-white/30 rounded-full px-6 py-3 hover:bg-white/80 transition-all duration-300 active:scale-95 shadow-lg shadow-primary/10;
+  }
+
+  .premium-text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-dark via-rosegold-dark to-primary-dark;
+  }
+}
+
+.animated-mesh-bg {
+  background-color: #FFF0F3;
+  background-image:
+    radial-gradient(at 0% 0%, hsla(350, 100%, 90%, 1) 0, transparent 50%),
+    radial-gradient(at 50% 0%, hsla(340, 100%, 92%, 1) 0, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(330, 100%, 91%, 1) 0, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(30, 100%, 95%, 1) 0, transparent 50%),
+    radial-gradient(at 100% 100%, hsla(350, 100%, 88%, 1) 0, transparent 50%);
+  background-size: 200% 200%;
+  animation: mesh-drift 15s ease infinite;
+}
+
+@keyframes mesh-drift {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
+}
